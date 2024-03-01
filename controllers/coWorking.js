@@ -24,6 +24,7 @@ exports.getCoWorkings = async (req,res,next) => {
     let queryStr=JSON.stringify(reqQuery);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in)\b/g,match=>`$${match}`)
     console.log(queryStr)
+    // ! Add .populate('appointments') to the query
     query = CoWorking.find(JSON.parse(queryStr))
 
     //Select Fields
