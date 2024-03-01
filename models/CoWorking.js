@@ -16,11 +16,11 @@ const CoWorkingSchema = new mongoose.Schema({
         type : String
     },
     opentime : {
-        type : Date,
+        type : String,
         required : [true , 'Please add an open time'],
     },
     closetime : {
-        type : Date,
+        type : String,
         required : [true , 'Please add a close time'],
     },
 }
