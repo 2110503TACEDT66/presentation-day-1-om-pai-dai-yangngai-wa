@@ -8,6 +8,7 @@ const {xss} = require('express-xss-sanitizer')
 const rateLimit = require("express-rate-limit")
 const hpp = require('hpp')
 const cors = require('cors')
+const auth = require('./routes/auth');
 
 //Load env vars
 dotenv.config({path:'./config/config.env'});
@@ -22,6 +23,7 @@ const app = express();
 
 //Body parser
 app.use(express.json());
+
 
 //Cookie parser
 app.use(cookieParser());
@@ -48,8 +50,9 @@ app.use(hpp());
 //Enable CORS
 app.use(cors());
 
-
+//Route files
 app.use('/api/v1/coworking',coWorking);
+app.use('/api/v1/auth',auth);
 
 
 const PORT = process.env.PORT || 5000;
