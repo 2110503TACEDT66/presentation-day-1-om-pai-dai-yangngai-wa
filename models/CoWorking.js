@@ -41,8 +41,24 @@ const CoWorkingSchema = new mongoose.Schema({
         type : String,
         required : [true , 'Please add a close time'],
     },
-}
-)
+}, {
+    toJSON: {virtuals:true},
+    toObject: {virtuals:true}
+});
+
+CoWorkingSchema.virtual('appointments', {
+    ref: 'Appointment',
+    localField: '_id',
+    foreignField: 'coWorking',
+    justOne:false
+});
+
+CoWorkingSchema.pre('deleteOne', {document:true, query: false}, async function(next){
+    console.log(`Appointments being removed from coWorking ${this._id}`);
+    await this.model('Appointment').deleteMany({hospital: this._id});
+
+    next();
+})
 
 
 

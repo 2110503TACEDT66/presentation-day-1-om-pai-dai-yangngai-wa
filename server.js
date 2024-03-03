@@ -17,7 +17,8 @@ dotenv.config({path:'./config/config.env'});
 connectDB()
 
 //Route files
-const coWorking = require('./routes/coWorkings')
+const coWorking = require('./routes/coWorkings');
+const appointments = require('./routes/appointments');
 
 const app = express();
 
@@ -53,6 +54,7 @@ app.use(cors());
 //Route files
 app.use('/api/v1/coworkings',coWorking);
 app.use('/api/v1/auth',auth);
+app.use('/api/v1/appointments', appointments)
 
 
 const PORT = process.env.PORT || 5000;
