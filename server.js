@@ -17,7 +17,7 @@ dotenv.config({path:'./config/config.env'});
 connectDB()
 
 //Route files
-const coWorking = require('./routes/coWorking')
+const coWorking = require('./routes/coWorkings')
 
 const app = express();
 
@@ -51,7 +51,7 @@ app.use(hpp());
 app.use(cors());
 
 //Route files
-app.use('/api/v1/coworking',coWorking);
+app.use('/api/v1/coworkings',coWorking);
 app.use('/api/v1/auth',auth);
 
 

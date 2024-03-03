@@ -1,5 +1,5 @@
 const express = require('express');
-const { getCoWorkings, getCoWorking, createCoWorking , updateCoWorking , deleteCoWorking } = require('../controllers/coWorking');
+const { getCoWorkings, getCoWorking, createCoWorking , updateCoWorking , deleteCoWorking } = require('../controllers/coWorkings');
 
 const {protect, authorize} = require('../middleware/auth');
 
