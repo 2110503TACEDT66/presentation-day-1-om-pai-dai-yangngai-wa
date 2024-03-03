@@ -12,8 +12,26 @@ const CoWorkingSchema = new mongoose.Schema({
         type : String,
         required : [true , 'Please add an address'],
     },
+    district : {
+        type : String,
+        required : [true , 'Please add an address'],
+    },
+    province : {
+        type : String,
+        required : [true , 'Please add a province'],
+    },
+    postalcode : {
+        type : String,
+        required : [true , 'Please add a province'],
+        maxlength : [5, 'Postal Code can not be more than 5 digits']
+    },
     tel : {
-        type : String
+        type : String,
+        required : [true , 'Please add a tel'],
+    },
+    price_hourly: {
+        type : Number,
+        required : [true , 'Please add a price_hourly'],
     },
     opentime : {
         type : String,
