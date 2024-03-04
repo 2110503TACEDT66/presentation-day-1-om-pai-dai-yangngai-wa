@@ -42,6 +42,9 @@ exports.getAppointments=async (req,res,next)=>{
     }
 }
 
+//@desc      Get single appointments
+//@route     GET /api/v1/appointments/:id
+//@access    Public
 exports.getAppointment=async (req,res,next) =>{
     try {
         const appointment = await Appointment.findById(req.params.id).populate({
