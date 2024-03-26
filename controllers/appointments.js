@@ -11,7 +11,11 @@ exports.getAppointments=async (req,res,next)=>{
         query=Appointment.find({user:req.user.id}).populate({
             path:'coWorking',
             select: 'name province tel'
-        });
+        }
+        ).populate({
+            path:'user',
+            select: 'name'
+            } )  ;
     }else{
         //If you are an admin, you can see all!
         if(req.params.coWorkingId) {
@@ -19,12 +23,19 @@ exports.getAppointments=async (req,res,next)=>{
             query=Appointment.find({coWorking:req.params.coWorkingId}).populate({
                 path: 'coWorking' ,
                 select: 'name province tel',
-            });
+
+            }).populate({
+                path:'user',
+                select: 'name'
+                } ) ;
         }else {
             query=Appointment.find().populate({
                 path:'coWorking' ,
                 select: 'name province tel'
-            });
+            }).populate({
+                path:'user',
+                select: 'name'
+            }) ;
         }
         
     }
