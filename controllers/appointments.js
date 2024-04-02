@@ -19,7 +19,6 @@ exports.getAppointments=async (req,res,next)=>{
     }else{
         //If you are an admin, you can see all!
         if(req.params.coWorkingId) {
-            console.log(req.params.coWorkingId);
             query=Appointment.find({coWorking:req.params.coWorkingId}).populate({
                 path: 'coWorking' ,
                 select: 'name province tel',
@@ -48,7 +47,6 @@ exports.getAppointments=async (req,res,next)=>{
             data: appointments
         });
     } catch (err) {
-        console.log(err.stack);
         return res.status(500).json({success:false,message:"Cannot find Appointment"});
     }
 }
@@ -72,7 +70,6 @@ exports.getAppointment=async (req,res,next) =>{
             data: appointment
         });
     } catch (error){
-        console.log(error);
         return res.status(500).json({success:false,message:"Cannot find Appointment"});
     }
 };
@@ -110,7 +107,6 @@ exports.addAppointment=async (req,res,next)=>{
         });
 
     } catch (error) {
-        console.log(error);
         return res.status(500).json({
             success:false,
             message:"Cannot create Appointment"
@@ -150,7 +146,6 @@ exports.updateAppointment=async (req,res,next)=>{
         });
 
     } catch (error) {
-        console.log(error);
         return res.status(500).json({
             success:false,
             message:"Cannot update Appointment"
@@ -181,9 +176,7 @@ exports.deleteAppointment=async (req,res,next)=>{
             success:true,
             data: {}
         });
-
     } catch (error) {
-        console.log(error);
         return res.status(500).json({
             success:false,
             message:"Cannot delete Appointment"

@@ -10,20 +10,15 @@ exports.getCoWorkings = async (req,res,next) => {
 
     //Copy req.query
     const reqQuery = {...req.query}
-    console.log(reqQuery)
-
     //Field to exclude
     const removeField = ['select' , 'sort','page','limit']
 
     //Loop over remove fields and delete them from reqQuery
     removeField.forEach(param=>delete reqQuery[param])
-    console.log(reqQuery)
-
     //Create query string
     
     let queryStr=JSON.stringify(reqQuery);
     queryStr = queryStr.replace(/\b(gt|gte|lt|lte|in|regex)\b/g,match=>`$${match}`)
-    console.log(queryStr)
     query = CoWorking.find(JSON.parse(queryStr)).populate('appointments');
 
     //Select Fields

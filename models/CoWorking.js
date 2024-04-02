@@ -54,7 +54,6 @@ CoWorkingSchema.virtual('appointments', {
 });
 
 CoWorkingSchema.pre('deleteOne', {document:true, query: false}, async function(next){
-    console.log(`Appointments being removed from coWorking ${this._id}`);
     await this.model('Appointment').deleteMany({hospital: this._id});
 
     next();
